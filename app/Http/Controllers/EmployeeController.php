@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use Illuminate\Http\Request;
-
+use App\Product;
 class EmployeeController extends Controller
 {
     /**
@@ -26,7 +26,7 @@ class EmployeeController extends Controller
     }
     public function add()
     {
-        return view('employee.add');
+        return view('employee.addproduct');
     }
 
     /**
@@ -35,9 +35,26 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
-        //
+
+        $req->validate([
+            'name'=>'required',
+            'quantity'=>'required',
+            'price'=>'required',
+        ]);
+
+        $name=$req->name;
+        $quantity=floatval($req->quantity);
+        $price=(int)$req->price;
+
+        $product=new Product();
+        $product->name=$name;
+        $product->quantity=$quantity;
+        $product->price=$price;
+
+        if($product->save()) echo("seccess");
+        else echo "failed";
     }
 
     /**
@@ -46,9 +63,11 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function viewProduct()
     {
-        //
+        $res=Product::all();
+        //dd($res);
+        return view('employee.viewproduct')->with($res);
     }
 
     /**

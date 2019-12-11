@@ -36,6 +36,15 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'name'=>'required',
+            'username'=>'required',
+            'contact'=>'required',
+            'password'=>'required|min:4'
+        ]);
+
+
         $name=$request->name;
         $contact=$request->contact;
         $username=$request->username;
@@ -45,9 +54,7 @@ class RegistrationController extends Controller
         $user->username=$username;
         $user->password=$password;
         $user->type=2;
-       
-
-
+    
         $employee=new Employee();
         $employee->name=$name;
         $employee->contact=$contact;

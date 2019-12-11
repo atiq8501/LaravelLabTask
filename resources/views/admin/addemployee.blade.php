@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Registration Page</title>
+	<title>Add Employee</title>
 	
 </head>
 <body>
-
+<center>
+<a href="{{route('admin.index')}}">Back</a> | 
+	<a href="{{route('admin.add')}}">abc</a> | 
+    <a href="/logout">Log Out</a> | 
 <fieldset>
-	<legend>Registration</legend>
+	<legend>Add Employee</legend>
+
 	<form method="post" >
 		<!-- @csrf -->
 		<!-- {{csrf_field()}} -->
@@ -16,7 +20,7 @@
 
        <tr>
 			<td>Name:</td>
-			<td><input type="text" name="name" value="{{old('name')}}"> </td>
+			<td><input type="text" name="name" value="{{old('name')}}"></td>
 		</tr>
 
         <tr>
@@ -33,17 +37,15 @@
 			<td><input type="password" name="password" value="{{old('password')}}"></td>
 		</tr>
 		<tr>
-			<td><input type="submit" name="submit" value="Registration"></td>
-			<td></td>
+			<td colspan="2"><center><input type="submit" name="submit" value="Add Employee"></center></td>
+			
 		</tr>
 
-
-        <tr>
-			<td colspan="2">If You already have account
-            <a href="/login">Click Here </a> to Login </td>
-		</tr>
 	</table>
 	</form>
+
+    
 </fieldset>
+</center>
 </body>
 </html>

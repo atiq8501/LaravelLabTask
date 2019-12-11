@@ -5,12 +5,9 @@
 	
 </head>
 <body>
-<h1>Welcome Home! {{session('name')}}</h1>
 
-	<a href="">Add user</a> | 
+	<a href="{{route('admin.addemployee')}}">Add Employee</a> | 
 	<a href="">UserList</a> | 
 	<a href="/logout">logout</a>
-
-
 </body>
 </html>

@@ -18,8 +18,8 @@ class LoginController extends Controller
 					->get();*/					
 		if(count($user) > 0 ){
 	
-			$req->session()->put('name', $req->input('username'));
-            $req->session()->put('name', $user->type);
+			$req->session()->put('username', $req->input('username'));
+            $req->session()->put('type', $user->type);
 			if($user->type==1)
                 return redirect()->route('admin.index');
             else return redirect()->route('employee.index');
